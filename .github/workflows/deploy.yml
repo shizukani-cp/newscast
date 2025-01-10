@@ -41,7 +41,7 @@ jobs:
         git commit -m "${{ env.commit_message }}"
         git push
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
 
   deploy:
     needs: build
