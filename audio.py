@@ -6,6 +6,9 @@ from langdetect import detect
 
 logger = getLogger(__name__)
 
+AudioSegment.ffmpeg = "/usr/bin/ffmpeg"
+AudioSegment.ffprobe = "/usr/bin/ffprobe"
+
 def _main(sentences, wait_time=1):
     splitted_sentences = sentences.splitlines()
     if len(splitted_sentences) == 0:
