@@ -1,6 +1,10 @@
 import os
+from logging import getLogger, basicConfig, INFO
 import feedparser
 import audio
+
+basicConfig(level=INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = getLogger(__name__)
 
 with open("urls.txt") as f:
     urls = f.readlines()
@@ -12,7 +16,7 @@ for url in urls:
     for entry in d.entries:
         read_text += entry.summary
         read_text += "\n"
-    print(url)
+    logger.info(url)
 
 audio.generate(read_text)
 
