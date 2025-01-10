@@ -20,6 +20,7 @@ for url in urls:
 
 audio.generate(read_text)
 
-os.remove("public/cast.mp3")
+if os.path.exists("public/cast.mp3"):
+    os.remove("public/cast.mp3")
 os.rename("out.mp3", "public/cast.mp3")
 
