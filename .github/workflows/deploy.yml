@@ -34,10 +34,11 @@ jobs:
     - name: Run Python script
       run: python generate.py
 
-
     - name: Get current date and time
       id: datetime
-      run: echo "commit_message=$(date '+%Y/%m/%d %H:%M:%S')" >> $GITHUB_ENV
+      run: |
+        echo "commit_message=$(date '+%Y/%m/%d %H:%M:%S')" >> $GITHUB_ENV
+        echo "document.getElementById('last_update').innerText = '$(date '+%Y/%m/%d %H:%M')'" > public/time.js
 
     - name: Commit and push changes
       run: |
