@@ -3,9 +3,13 @@ name: Deploy
 on:
   schedule:
     - cron: '0 * * * *'
+  push:
+    branches:
+      - main
 
 env:
   LANG: "ja_JP.UTF-8"
+
 jobs:
   build:
     runs-on: ubuntu-latest
