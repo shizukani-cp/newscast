@@ -40,8 +40,10 @@ jobs:
     - name: Get current date and time
       id: datetime
       run: |
-        TZ=-9 echo "commit_message=$(date '+%Y/%m/%d %H:%M:%S')" >> $GITHUB_ENV
-        TZ=-9 echo "document.getElementById('last_update').innerText = '$(date '+%Y/%m/%d %H:%M')'" > public/time.js
+        echo "commit_message='$(date '+%Y/%m/%d %H:%M:%S') UTC'" >> $GITHUB_ENV
+        echo "let update_time = new Date('$(date '+%Y/%m/%d %H:%M')');" > public/time.js
+        echo "update_time.setHours(update_time.getHours() + 9);" >> public/time.js
+        echo "document.getElementById('last_update').innerText = update_time.toLocaleString().slice(0,-3);" >> public/time.js
 
     - name: Commit and push changes
       run: |
