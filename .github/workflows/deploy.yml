@@ -7,9 +7,6 @@ on:
     branches:
       - main
 
-env:
-  LANG: "ja_JP.UTF-8"
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,11 +14,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
-    - name: Set locale
-      run: |
-          sudo locale-gen ja_JP.UTF-8
-          sudo update-locale LANG=ja_JP.UTF-8
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -48,8 +40,8 @@ jobs:
     - name: Get current date and time
       id: datetime
       run: |
-        echo "commit_message=$(date '+%Y/%m/%d %H:%M:%S')" >> $GITHUB_ENV
-        echo "document.getElementById('last_update').innerText = '$(date '+%Y/%m/%d %H:%M')'" > public/time.js
+        TZ=-9 echo "commit_message=$(date '+%Y/%m/%d %H:%M:%S')" >> $GITHUB_ENV
+        TZ=-9 echo "document.getElementById('last_update').innerText = '$(date '+%Y/%m/%d %H:%M')'" > public/time.js
 
     - name: Commit and push changes
       run: |
