@@ -25,6 +25,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Pull latest changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git pull --rebase
+
     - name: Run Python script
       run: python generate.py
 
@@ -32,12 +38,6 @@ jobs:
     - name: Get current date and time
       id: datetime
       run: echo "commit_message=$(date '+%Y/%m/%d %H:%M:%S')" >> $GITHUB_ENV
-
-    - name: Pull latest changes
-      run: |
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git pull --rebase
 
     - name: Commit and push changes
       run: |
