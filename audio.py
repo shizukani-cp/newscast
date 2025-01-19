@@ -18,10 +18,10 @@ def _main(sentences, wait_time=1):
         gtts.gTTS(s, lang=detect(s)).save(f"tmp/{n}.mp3")
         time.sleep(wait_time)
 
-    data = AudioSegment.from_file("tmp/0.mp3")
+    data = AudioSegment.from_mp3("tmp/0.mp3")
     logger.info(f"join: 1 / {n}")
     for f in range(1, n):
-        data += AudioSegment.from_file(f"tmp/{f}.mp3")
+        data += AudioSegment.from_mp3(f"tmp/{f}.mp3")
         logger.info(f"join: {f+1} / {n}")
 
     data.export("out.mp3", format="mp3")
