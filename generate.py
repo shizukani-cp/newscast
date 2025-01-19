@@ -1,4 +1,4 @@
-import os
+import os, glob, json
 from logging import getLogger, basicConfig, INFO
 import feedparser
 import audio
@@ -6,21 +6,18 @@ import audio
 basicConfig(level=INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = getLogger(__name__)
 
-with open("urls.txt") as f:
-    urls = f.readlines()
+with open("public/urls.json", encoding="utf-8") as f:
+    url_data = json.loads(f.read())
 
-read_text = ""
+for f in glob.glob("public/*.mp3"): os.remove(f)
 
-for url in urls:
-    d = feedparser.parse(url)
+for url in url_data:
+    logger.info(url)
+    read_text = ""
+    d = feedparser.parse(url["url"])
     for entry in d.entries:
         read_text += entry.summary
         read_text += "\n"
-    logger.info(url)
-
-audio.generate(read_text)
-
-if os.path.exists("public/cast.mp3"):
-    os.remove("public/cast.mp3")
-os.rename("out.mp3", "public/cast.mp3")
+    audio.generate(read_text)
+    os.rename("out.mp3", f"public/{url['fname']}.mp3")
 
