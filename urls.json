@@ -1,0 +1,42 @@
+[
+  {
+    "name": "主要ニュース",
+    "fname": "main",
+    "url": "https://www.nhk.or.jp/rss/news/cat0.xml"
+  },
+  {
+    "name": "社会",
+    "fname": "social",
+    "url": "https://www.nhk.or.jp/rss/news/cat1.xml"
+  },
+  {
+    "name": "科学・医療",
+    "fname": "science",
+    "url": "https://www.nhk.or.jp/rss/news/cat2.xml"
+  },
+  {
+    "name": "政治",
+    "fname": "politics",
+    "url": "https://www.nhk.or.jp/rss/news/cat3.xml"
+  },
+  {
+    "name": "経済",
+    "fname": "economy",
+    "url": "https://www.nhk.or.jp/rss/news/cat4.xml"
+  },
+  {
+    "name": "国際",
+    "fname": "international",
+    "url": "https://www.nhk.or.jp/rss/news/cat5.xml"
+  },
+  {
+    "name": "スポーツ",
+    "fname": "sports",
+    "url": "https://www.nhk.or.jp/rss/news/cat6.xml"
+  },
+  {
+    "name": "文化・エンタメ",
+    "fname": "culture",
+    "url": "https://www.nhk.or.jp/rss/news/cat7.xml"
+  }
+]
