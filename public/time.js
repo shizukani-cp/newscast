@@ -1,3 +1,3 @@
-let update_time = new Date('2025/02/13 04:01');
+let update_time = new Date('2025/02/13 05:00');
 update_time.setHours(update_time.getHours() + 9);
 document.getElementById('last_update').innerText = update_time.toLocaleString().slice(0,-3);
